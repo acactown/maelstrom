@@ -10,6 +10,8 @@ class DockerLogin extends SetupStage {
 
     @Override
     void run() {
+        println("Running "+name()+" stage")
+        next()
 
     }
 

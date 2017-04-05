@@ -15,7 +15,14 @@ abstract class Phase extends Step {
     Phase () {
     }
 
-    public void setNextInChain (Stage nextInChain) {
+    @Override
+    void run() {
+        println("Running "+name()+" phase")
+        chainedStages.run()
+        next()
+    }
+
+    public void setNextInChain (Phase nextInChain) {
         if (this.nextInChain)
             throw new Exception ("Cannot change the next chain when it was already set")
         this.nextInChain=nextInChain

@@ -10,11 +10,6 @@ class SetupPhase extends Phase {
     }
 
     @Override
-    void run() {
-
-    }
-
-    @Override
     PhaseType phaseType() {
         return PhaseType.SETUP
     }

@@ -60,21 +60,21 @@ class ChainComposer {
     Stage getChainedStages () {
         Stage previous = null
         for (Stage stage : elements) {
-            if (previous==null)
-                previous=stage
-            else
-                stage.setNextInChain(previous)
+            if (previous!=null)
+                previous.setNextInChain(stage)
+            previous=stage
         }
+        return elements.get(0)
     }
 
     Phase getChainedPhases () {
         Phase previous = null
         for (Phase phase : elements) {
-            if (previous==null)
-                previous=phase
-            else
-                phase.setNextInChain(previous)
+            if (previous!=null)
+                previous.setNextInChain(phase)
+            previous=phase
         }
+        return elements.get(0)
     }
 
 }

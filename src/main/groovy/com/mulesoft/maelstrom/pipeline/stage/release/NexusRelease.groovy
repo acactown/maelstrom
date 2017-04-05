@@ -11,6 +11,8 @@ class NexusRelease extends ReleaseStage {
 
     @Override
     void run() {
+        println("Running "+name()+" stage")
+        next()
 
     }
 

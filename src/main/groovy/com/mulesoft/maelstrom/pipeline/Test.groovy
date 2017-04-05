@@ -29,37 +29,37 @@ class Test {
         phases.addElement(setupPhase)
 
         BuildPhase buildPhase = new BuildPhase()
-        new ChainComposer();
+        composer = new ChainComposer();
         composer.addElement(new MavenBuild())
         buildPhase.chainedStages = composer.getChainedStages()
         phases.addElement(buildPhase)
 
         QualityPhase qualityPhase = new QualityPhase()
-        new ChainComposer();
+        composer = new ChainComposer();
         composer.addElement(new IntegrationTesting())
         qualityPhase.chainedStages = composer.getChainedStages()
         phases.addElement(qualityPhase)
 
         SecurityPhase securityPhase = new SecurityPhase()
-        new ChainComposer();
+        composer = new ChainComposer();
         composer.addElement(new OSSCheck())
         securityPhase.chainedStages = composer.getChainedStages()
         phases.addElement(securityPhase)
 
         ReleasePhase releasePhase = new ReleasePhase()
-        new ChainComposer();
+        composer = new ChainComposer();
         composer.addElement(new NexusRelease())
         releasePhase.chainedStages = composer.getChainedStages()
         phases.addElement(releasePhase)
 
         ProvisioningPhase provisioningPhase = new ProvisioningPhase()
-        new ChainComposer();
+        composer = new ChainComposer();
         composer.addElement(new KubeClusterProvisioning())
         provisioningPhase.chainedStages = composer.getChainedStages()
         phases.addElement(provisioningPhase)
 
         DeploymentPhase deploymentPhase = new DeploymentPhase()
-        new ChainComposer();
+        composer = new ChainComposer();
         composer.addElement(new HelmDeployment())
         deploymentPhase.chainedStages = composer.getChainedStages()
         phases.addElement(deploymentPhase)

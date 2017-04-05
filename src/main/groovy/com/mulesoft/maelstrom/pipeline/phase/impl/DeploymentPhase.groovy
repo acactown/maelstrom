@@ -10,11 +10,6 @@ class DeploymentPhase extends Phase {
     }
 
     @Override
-    void run() {
-
-    }
-
-    @Override
     PhaseType phaseType() {
         return PhaseType.DEPLOYMENT
     }

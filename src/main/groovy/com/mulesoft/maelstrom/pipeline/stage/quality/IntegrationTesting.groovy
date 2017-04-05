@@ -11,6 +11,8 @@ class IntegrationTesting extends QualityStage {
 
     @Override
     void run() {
+        println("Running "+name()+" stage")
+        next()
 
     }
 

@@ -11,6 +11,8 @@ class KubeClusterProvisioning extends ProvisioningStage {
 
     @Override
     void run() {
+        println("Running "+name()+" stage")
+        next()
 
     }
 
