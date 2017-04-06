@@ -20,51 +20,22 @@ class Test {
 
     static void main (String[] args) {
 
-        def phases = new ChainComposer()
-
-        SetupPhase setupPhase = new SetupPhase()
-        def composer = new ChainComposer();
-        composer.addElement(new DockerLogin())
-        setupPhase.chainedStages = composer.getChainedStages()
-        phases.addElement(setupPhase)
-
-        BuildPhase buildPhase = new BuildPhase()
-        composer = new ChainComposer();
-        composer.addElement(new MavenBuild())
-        buildPhase.chainedStages = composer.getChainedStages()
-        phases.addElement(buildPhase)
-
-        QualityPhase qualityPhase = new QualityPhase()
-        composer = new ChainComposer();
-        composer.addElement(new IntegrationTesting())
-        qualityPhase.chainedStages = composer.getChainedStages()
-        phases.addElement(qualityPhase)
-
-        SecurityPhase securityPhase = new SecurityPhase()
-        composer = new ChainComposer();
-        composer.addElement(new OSSCheck())
-        securityPhase.chainedStages = composer.getChainedStages()
-        phases.addElement(securityPhase)
-
-        ReleasePhase releasePhase = new ReleasePhase()
-        composer = new ChainComposer();
-        composer.addElement(new NexusRelease())
-        releasePhase.chainedStages = composer.getChainedStages()
-        phases.addElement(releasePhase)
-
-        ProvisioningPhase provisioningPhase = new ProvisioningPhase()
-        composer = new ChainComposer();
-        composer.addElement(new KubeClusterProvisioning())
-        provisioningPhase.chainedStages = composer.getChainedStages()
-        phases.addElement(provisioningPhase)
-
-        DeploymentPhase deploymentPhase = new DeploymentPhase()
-        composer = new ChainComposer();
-        composer.addElement(new HelmDeployment())
-        deploymentPhase.chainedStages = composer.getChainedStages()
-        phases.addElement(deploymentPhase)
-
-        Phase phase = phases.getChainedPhases()
+        Phase phase = new PipelineComposer()
+            .addPhase(new SetupPhase())
+            .addStage(new DockerLogin())
+            .addPhase(new BuildPhase())
+            .addStage(new MavenBuild())
+            .addPhase(new QualityPhase())
+            .addStage(new IntegrationTesting())
+            .addPhase(new SecurityPhase())
+            .addStage(new OSSCheck())
+            .addPhase(new ReleasePhase())
+            .addStage(new NexusRelease())
+            .addPhase(new ProvisioningPhase())
+            .addStage(new KubeClusterProvisioning())
+            .addPhase(new DeploymentPhase())
+            .addStage(new HelmDeployment())
+            .build()
 
         phase.run()
     }

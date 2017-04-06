@@ -3,7 +3,7 @@ package com.mulesoft.maelstrom.pipeline
 import com.mulesoft.maelstrom.pipeline.phase.Phase
 import com.mulesoft.maelstrom.pipeline.stage.Stage
 
-class ChainComposer {
+class ChainComposer <T extends Step> {
 
     enum Position {
         FIRST,LAST,AFTER,BEFORE
@@ -12,11 +12,12 @@ class ChainComposer {
     List<Step> elements
     List<String> elementsNames
 
-    void addElement (Step element) {
+    ChainComposer addElement (Step element) {
         addElement(element,Position.LAST,null)
+        return this
     }
 
-    void addElement (Step element, Position position, String relativeToName) {
+    ChainComposer addElement (Step element, Position position, String relativeToName) {
         if (elements==null)
             elements=new ArrayList<Phase>()
         if (elementsNames==null)
@@ -51,28 +52,19 @@ class ChainComposer {
                 elementsNames.add(currPos,element.name())
                 break
         }
+        return this
     }
 
     boolean exists (String name) {
         return elementsNames.indexOf(name)>-1
     }
 
-    Stage getChainedStages () {
-        Stage previous = null
-        for (Stage stage : elements) {
+    T build () {
+        T previous = null
+        for (T element : elements) {
             if (previous!=null)
-                previous.setNextInChain(stage)
-            previous=stage
-        }
-        return elements.get(0)
-    }
-
-    Phase getChainedPhases () {
-        Phase previous = null
-        for (Phase phase : elements) {
-            if (previous!=null)
-                previous.setNextInChain(phase)
-            previous=phase
+                previous.setNextInChain(element)
+            previous=element
         }
         return elements.get(0)
     }

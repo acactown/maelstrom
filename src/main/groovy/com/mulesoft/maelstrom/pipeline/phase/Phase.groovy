@@ -6,10 +6,9 @@ import com.mulesoft.maelstrom.pipeline.stage.Stage
 abstract class Phase extends Step {
 
     Stage chainedStages
-    Phase nextInChain
 
     Phase (Phase nextInChain) {
-        this.nextInChain=nextInChain
+        super(nextInChain)
     }
 
     Phase () {
@@ -22,21 +21,6 @@ abstract class Phase extends Step {
         next()
     }
 
-    public void setNextInChain (Phase nextInChain) {
-        if (this.nextInChain)
-            throw new Exception ("Cannot change the next chain when it was already set")
-        this.nextInChain=nextInChain
-    }
-
     abstract PhaseType phaseType()
-
-    protected void next() {
-        if (nextInChain!=null)
-            nextInChain.run()
-    }
-
-    protected void signCompletion () {
-
-    }
 
 }
