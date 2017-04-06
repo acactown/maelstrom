@@ -2,7 +2,12 @@ group 'com.mulesoft'
 version '1.0-SNAPSHOT'
 
 apply plugin: 'groovy'
-
+sourceSets {
+    unitTest {
+        groovy.srcDirs = [file('src')]
+        resources.srcDirs = [file('resources')]
+    }
+}
 repositories {
     mavenCentral()
 }
