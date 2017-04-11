@@ -1,0 +1,8 @@
+#!/bin/bash
+
+docker stop $(docker ps -a -q)
+docker rm $(docker ps -a -q)
+docker build -t ezefarina/jenkins .
+docker create -v /var/jenkins_home --name jenkins-dv ezefarina/jenkins
+docker run -d -p 8080:8080 --volumes-from jenkins-dv --name myjenkins ezefarina/jenkins
+docker logs -f myjenkins

@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jenkins.branch.MultiBranchProject_-State plugin="branch-api@2.0.8">
+  <sourceActions>
+    <entry>
+      <string>8dda2a15-4e7f-444b-9727-5e581ea51ab0</string>
+      <list>
+        <jenkins.plugins.git.GitRemoteHeadRefAction plugin="git@3.2.0">
+          <remote>https://github.com/ezefarina/git-training.git</remote>
+          <name>master</name>
+        </jenkins.plugins.git.GitRemoteHeadRefAction>
+      </list>
+    </entry>
+  </sourceActions>
+</jenkins.branch.MultiBranchProject_-State>

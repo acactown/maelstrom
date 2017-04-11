@@ -37,15 +37,15 @@ class PipelineComposer {
         return this
     }
 
-    Phase build() {
+    Phase build(def script) {
         ChainComposer chain
         String phaseName
         for (Map.Entry<String,Phase> entry : phases) {
             phaseName=entry.getKey()
             chain=stagesComposition.get(phaseName)
-            phases.get(phaseName).chainedStages=chain.build()
+            phases.get(phaseName).chainedStages=chain.build(script)
         }
-        return phasesComposite.build()
+        return phasesComposite.build(script)
     }
 
     ChainComposer getPhasesComposer () {

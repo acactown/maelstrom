@@ -20,7 +20,9 @@ abstract class Phase extends Step {
 
     @Override
     void run() {
-        println("Running "+name()+" phase")
+        script.echo "aallalalalalalalalalalal"
+        script.stage name()+' phase'
+        println("Running " + name() + " phase")
         chainedStages.run()
         next()
     }

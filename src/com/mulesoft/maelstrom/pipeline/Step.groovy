@@ -4,6 +4,8 @@ abstract class Step {
 
     Step nextInChain
 
+    def script
+
     abstract String name()
     abstract void run()
 
@@ -12,6 +14,10 @@ abstract class Step {
     }
 
     Step () {
+    }
+
+    void setScript (def script) {
+        this.@script = script
     }
 
     protected void signCompletion () {
