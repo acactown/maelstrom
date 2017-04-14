@@ -9,13 +9,6 @@ class KubeClusterProvisioning extends ProvisioningStage {
     }
 
     @Override
-    void run() {
-        println("Running "+name()+" stage")
-        next()
-
-    }
-
-    @Override
     String name() {
         return "KUBE_PROVISIONING"
     }

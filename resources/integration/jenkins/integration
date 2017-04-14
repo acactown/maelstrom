@@ -1,49 +1,18 @@
 #!/bin/bash
 
 readonly CONTAINERS=("localjenkins" "localjenkins_dv")
-readonly IMAGE="ezefarina/jenkins"
+readonly IMAGE="ezefarina/jenkins:18"
 readonly JENKINS_HOME="/var/jenkins_home"
-
-if [[ $1 =~ ^(help|clean|run|stop|clean-run)$ ]]; then
-  case $1 in
-      help)
-        echo "Usage:"
-        echo "    help  - Prints this info"
-        echo "    clean - Stops and deletes the locally created Jenkins containers"
-        echo "    stop  - Stops the running Jenkins containers"
-        echo "    run   - Runs the data volume and Jenkins service"
-        echo "    clean-run - Stops, deletes, recreates and runs the Jenkins service and data volume"
-        echo
-      ;;
-      clean)
-        clean
-      ;;
-      run)
-        run
-      ;;
-      stop)
-        stop
-      ;;
-      clean-run)
-        clean && run
-      ;;
-      *)
-      ;;
-  esac
-else
-  echo "Invalid subcommand $1" >&2
-  exit 1
-fi
 
 function run {
   docker build -t $IMAGE docker/
-  docker create -v $JENKINS_HOME --name $CONTAINERS[1] $IMAGE
-  docker run -d -p 8080:8080 --volumes-from $CONTAINERS[1] --name $CONTAINERS[0] $IMAGE
-  docker logs -f $CONTAINERS[0]
+  docker create -v $JENKINS_HOME --name ${CONTAINERS[1]} $IMAGE
+  docker run -d -p 8080:8080 --volumes-from ${CONTAINERS[1]} --name ${CONTAINERS[0]} $IMAGE
+  docker logs -f ${CONTAINERS[0]}
 }
 
 function stop {
-  for i in "${$CONTAINERS[@]}"
+  for i in "${CONTAINERS[@]}"
   do
     if docker ps | awk -v app="$i" 'NR>1{  ($(NF) == i )  }'; then
       docker stop "$i"
@@ -52,10 +21,45 @@ function stop {
 }
 
 function clean {
-  for i in "${$CONTAINERS[@]}"
+  for i in "${CONTAINERS[@]}"
   do
     if docker ps | awk -v app="$i" 'NR>1{  ($(NF) == i )  }'; then
       docker stop "$i" && docker rm -f "$i"
     fi
   done
 }
+
+function main {
+    if [[ $1 =~ ^(help|clean|run|stop|clean-run)$ ]]; then
+      case $1 in
+          help)
+            echo "Usage:"
+            echo "    help  - Prints this info"
+            echo "    clean - Stops and deletes the locally created Jenkins containers"
+            echo "    stop  - Stops the running Jenkins containers"
+            echo "    run   - Runs the data volume and Jenkins service"
+            echo "    clean-run - Stops, deletes, recreates and runs the Jenkins service and data volume"
+            echo
+          ;;
+          clean)
+            clean
+          ;;
+          run)
+            run
+          ;;
+          stop)
+            stop
+          ;;
+          clean-run)
+            clean && run
+          ;;
+          *)
+          ;;
+      esac
+    else
+      echo "Invalid subcommand $1" >&2
+      exit 1
+    fi
+}
+
+main $1

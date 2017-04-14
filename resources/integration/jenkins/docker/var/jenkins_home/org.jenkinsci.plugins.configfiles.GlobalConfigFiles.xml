@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<org.jenkinsci.plugins.configfiles.GlobalConfigFiles plugin="config-file-provider@2.15.1">
+    <configs class="list">
+        <org.jenkinsci.plugins.configfiles.groovy.GroovyScript>
+            <id>Jenkinsfile</id>
+            <name>Jenkinsfile</name>
+            <comment></comment>
+            <content>
+                @Library('Maelstrom')
+                import com.mulesoft.maelstrom.pipeline.integration.JenkinsPipeline
+
+                def pipeline = JenkinsPipeline.constructPipeline(this)
+                pipeline.run()
+            </content>
+            <providerId>org.jenkinsci.plugins.configfiles.groovy.GroovyScript</providerId>
+        </org.jenkinsci.plugins.configfiles.groovy.GroovyScript>
+    </configs>
+</org.jenkinsci.plugins.configfiles.GlobalConfigFiles>

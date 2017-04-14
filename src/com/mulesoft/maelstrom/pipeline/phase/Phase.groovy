@@ -1,6 +1,7 @@
 package com.mulesoft.maelstrom.pipeline.phase
 
 import com.mulesoft.maelstrom.pipeline.Step
+import com.mulesoft.maelstrom.pipeline.integration.JenkinsPipeline
 import com.mulesoft.maelstrom.pipeline.stage.Stage
 
 abstract class Phase extends Step {
@@ -20,8 +21,7 @@ abstract class Phase extends Step {
 
     @Override
     void run() {
-        script.echo "aallalalalalalalalalalal"
-        script.stage name()+' phase'
+        JenkinsPipeline.getPipeline().getScript().stage (name()+' STAGE')
         println("Running " + name() + " phase")
         chainedStages.run()
         next()

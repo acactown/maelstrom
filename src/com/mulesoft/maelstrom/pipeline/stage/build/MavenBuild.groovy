@@ -9,11 +9,6 @@ class MavenBuild extends BuildStage {
     }
 
     @Override
-    void run() {
-
-    }
-
-    @Override
     String name() {
         return "MAVEN_BUILD"
     }

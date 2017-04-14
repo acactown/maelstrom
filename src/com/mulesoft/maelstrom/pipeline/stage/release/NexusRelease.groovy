@@ -9,13 +9,6 @@ class NexusRelease extends ReleaseStage {
     }
 
     @Override
-    void run() {
-        println("Running "+name()+" stage")
-        next()
-
-    }
-
-    @Override
     String name() {
         return "NEXUS_RELEASE"
     }

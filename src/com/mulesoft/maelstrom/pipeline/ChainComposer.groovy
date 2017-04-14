@@ -54,10 +54,9 @@ class ChainComposer <T extends Step> {
         return elementsNames.indexOf(name)>-1
     }
 
-    T build (def script) {
+    T build () {
         T previous = null
         for (T element : elements) {
-            element.setScript(script)
             if (previous!=null)
                 previous.setNextInChain(element)
             previous=element

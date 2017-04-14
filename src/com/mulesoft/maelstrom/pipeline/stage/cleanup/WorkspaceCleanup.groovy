@@ -9,12 +9,6 @@ class WorkspaceCleanup extends CleanupStage {
     }
 
     @Override
-    void run() {
-        println("Running "+name()+" stage")
-        next()
-    }
-
-    @Override
     String name() {
         return "WORKSPACE_CLEANUP"
     }

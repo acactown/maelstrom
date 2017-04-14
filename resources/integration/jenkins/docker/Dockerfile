@@ -4,9 +4,8 @@ MAINTAINER Ezequiel Fariña <ezefarina@gmail.com>
 # TODO: Gotta take this `root` out
 USER root
 
-COPY jenkins_home/ ${JENKINS_HOME}
-COPY plugins2.txt /plugins.txt
-RUN /usr/local/bin/install-plugins.sh $(cat /plugins.txt | tr '\n' ' ')
+COPY var/ /var
+RUN /usr/local/bin/install-plugins.sh $(cat ${JENKINS_HOME}/plugins.txt | tr '\n' ' ')
 
 RUN chown -R jenkins.jenkins /usr/share/jenkins/ref
 RUN chown -R jenkins.jenkins ${JENKINS_HOME}

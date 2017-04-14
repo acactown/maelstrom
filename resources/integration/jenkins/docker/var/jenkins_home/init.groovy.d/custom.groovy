@@ -1,4 +1,4 @@
-package integration.jenkins.docker.jenkins_home.init.groovy.d
+package integration.jenkins.docker.var.jenkins_home.init.groovy.d
 
 import hudson.model.*;
 import jenkins.model.*;
@@ -15,6 +15,8 @@ import hudson.security.*
 
 Thread.start {
     sleep 10000
+
+    org.jenkinsci.plugins.permissivescriptsecurity.PermissiveWhitelist.enabled = true
 
     def jenkins = Jenkins.getInstance()
     def strategy = new GlobalMatrixAuthorizationStrategy()
@@ -86,13 +88,13 @@ Thread.start {
     strategy.add(Jenkins.ADMINISTER, "admin")
 
     def local = System.getenv("BUILD").toString()
-    if(local == "local") {
+    if (local == "local") {
         // Overall Permissions
-        strategy.add(hudson.model.Hudson.ADMINISTER,'anonymous')
-        strategy.add(hudson.PluginManager.CONFIGURE_UPDATECENTER,'anonymous')
-        strategy.add(hudson.model.Hudson.READ,'anonymous')
-        strategy.add(hudson.model.Hudson.RUN_SCRIPTS,'anonymous')
-        strategy.add(hudson.PluginManager.UPLOAD_PLUGINS,'anonymous')
+        strategy.add(hudson.model.Hudson.ADMINISTER, 'anonymous')
+        strategy.add(hudson.PluginManager.CONFIGURE_UPDATECENTER, 'anonymous')
+        strategy.add(hudson.model.Hudson.READ, 'anonymous')
+        strategy.add(hudson.model.Hudson.RUN_SCRIPTS, 'anonymous')
+        strategy.add(hudson.PluginManager.UPLOAD_PLUGINS, 'anonymous')
     }
 
     jenkins.setAuthorizationStrategy(strategy)
