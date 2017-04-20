@@ -7,10 +7,11 @@
             <comment></comment>
             <content>
                 @Library('Maelstrom')
-                import com.mulesoft.maelstrom.pipeline.integration.JenkinsPipeline
+                import com.mulesoft.maelstrom.pipeline.integration.jenkins.JenkinsIntegration
+                import com.mulesoft.maelstrom.pipeline.Pipeline
 
-                def pipeline = JenkinsPipeline.constructPipeline(this)
-                pipeline.run()
+                Pipeline.doIntegration(new JenkinsIntegration(this))
+                Pipeline.run()
             </content>
             <providerId>org.jenkinsci.plugins.configfiles.groovy.GroovyScript</providerId>
         </org.jenkinsci.plugins.configfiles.groovy.GroovyScript>

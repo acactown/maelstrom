@@ -1,11 +1,7 @@
 package com.mulesoft.maelstrom.dsl
 
-import SignatureService
 import org.yaml.snakeyaml.Yaml
 
-/**
- * Created by ezequielfarina on 4/5/17.
- */
 class Test {
 
     static void main (String[] args) {

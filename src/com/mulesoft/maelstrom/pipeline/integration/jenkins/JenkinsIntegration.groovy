@@ -1,6 +1,7 @@
-package com.mulesoft.maelstrom.pipeline.integration
+package com.mulesoft.maelstrom.pipeline.integration.jenkins
 
 import com.mulesoft.maelstrom.pipeline.PipelineComposer
+import com.mulesoft.maelstrom.pipeline.integration.Integration
 import com.mulesoft.maelstrom.pipeline.phase.Phase
 import com.mulesoft.maelstrom.pipeline.phase.impl.BuildPhase
 import com.mulesoft.maelstrom.pipeline.phase.impl.DeploymentPhase
@@ -16,26 +17,17 @@ import com.mulesoft.maelstrom.pipeline.stage.quality.IntegrationTesting
 import com.mulesoft.maelstrom.pipeline.stage.release.NexusRelease
 import com.mulesoft.maelstrom.pipeline.stage.security.OSSCheck
 import com.mulesoft.maelstrom.pipeline.stage.setup.DockerLogin
+import sun.reflect.generics.reflectiveObjects.NotImplementedException
 
-class JenkinsPipeline {
+class JenkinsIntegration implements Integration {
 
-    def script
-    private static JenkinsPipeline inner
-
-    public static JenkinsPipeline constructPipeline(def script) {
-        inner = new JenkinsPipeline(script)
-        return inner
-    }
-
-    public static JenkinsPipeline getPipeline() {
-        return inner
-    }
+    private def script
 
     public def getScript () {
         return script
     }
 
-    private JenkinsPipeline(def script) {
+    public JenkinsIntegration(def script) {
         this.script = script
     }
 
@@ -57,6 +49,26 @@ class JenkinsPipeline {
             .addStage(new HelmDeployment())
             .build()
         phase.run()
+    }
+
+    @Override
+    def stageInit(final String name) {
+        script.stage name
+    }
+
+    @Override
+    def stageFinish(final String name) {
+        throw new NotImplementedException()
+    }
+
+    @Override
+    def phaseInit(final String name) {
+        script.stage name
+    }
+
+    @Override
+    def phaseFinish(final String name) {
+        throw new NotImplementedException()
     }
 
 }
