@@ -1,3 +1,4 @@
 #!/bin/bash
 
-sh resources/integration/$1/integration $2
+cd resources/integration/$1
+sh integration $2
