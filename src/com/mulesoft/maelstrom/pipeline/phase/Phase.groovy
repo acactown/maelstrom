@@ -1,7 +1,7 @@
 package com.mulesoft.maelstrom.pipeline.phase
 
 import com.mulesoft.maelstrom.pipeline.Pipeline
-import com.mulesoft.maelstrom.pipeline.Step
+import com.mulesoft.maelstrom.pipeline.core.Step
 import com.mulesoft.maelstrom.pipeline.stage.Stage
 
 abstract class Phase extends Step {

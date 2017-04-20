@@ -1,4 +1,4 @@
-package com.mulesoft.maelstrom.pipeline
+package com.mulesoft.maelstrom.pipeline.security
 
 import com.mulesoft.maelstrom.pipeline.phase.Phase
 import groovy.transform.PackageScope

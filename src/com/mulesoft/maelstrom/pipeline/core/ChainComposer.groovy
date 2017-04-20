@@ -1,4 +1,4 @@
-package com.mulesoft.maelstrom.pipeline
+package com.mulesoft.maelstrom.pipeline.core
 
 import com.mulesoft.maelstrom.pipeline.phase.Phase
 

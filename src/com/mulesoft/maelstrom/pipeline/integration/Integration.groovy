@@ -10,6 +10,4 @@ interface Integration {
 
   def phaseFinish(String name)
 
-  def run()
-
 }
