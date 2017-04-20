@@ -1,4 +1,5 @@
 #!/bin/bash
 
-cd resources/integration/$1
+pushd resources/integration/$1
 sh integration $2
+popd
