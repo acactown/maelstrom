@@ -33,8 +33,7 @@ class Pipeline {
     return integration
   }
 
-  public def run() {
-
+  public static void run() {
     JenkinsIntegration jenkins = integration
     jenkins.script.echo "Testttttttt"
     jenkins.script.sh 'pwd'
