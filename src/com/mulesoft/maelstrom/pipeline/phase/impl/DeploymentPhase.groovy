@@ -4,18 +4,18 @@ import com.mulesoft.maelstrom.pipeline.phase.Phase
 
 class DeploymentPhase extends Phase {
 
-    DeploymentPhase(Phase nextInChain) {
-        super(nextInChain)
-    }
+  DeploymentPhase(Phase nextInChain) {
+    super(nextInChain)
+  }
 
-    @Override
-    Phase.Type phaseType() {
-        return Phase.Type.DEPLOYMENT
-    }
+  @Override
+  Phase.Type phaseType() {
+    return Phase.Type.DEPLOYMENT
+  }
 
-    @Override
-    String name() {
-        return Phase.Type.DEPLOYMENT.name()
-    }
+  @Override
+  String name() {
+    return Phase.Type.DEPLOYMENT.name()
+  }
 
 }

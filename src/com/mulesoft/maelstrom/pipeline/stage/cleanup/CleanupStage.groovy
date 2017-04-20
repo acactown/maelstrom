@@ -4,8 +4,8 @@ import com.mulesoft.maelstrom.pipeline.stage.Stage
 
 abstract class CleanupStage extends Stage {
 
-    CleanupStage(Stage nextInChain) {
-        super(nextInChain)
-    }
+  CleanupStage(Stage nextInChain) {
+    super(nextInChain)
+  }
 
 }

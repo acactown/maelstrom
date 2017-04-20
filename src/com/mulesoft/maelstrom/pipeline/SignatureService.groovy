@@ -6,8 +6,8 @@ import groovy.transform.PackageScope
 @PackageScope
 class SignatureService {
 
-    void signPhase (Phase.Type type) {
-        println("Phase signed: "+type)
-    }
+  void signPhase(Phase.Type type) {
+    println("Phase signed: " + type)
+  }
 
 }

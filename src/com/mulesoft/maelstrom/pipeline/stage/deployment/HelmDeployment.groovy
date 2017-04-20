@@ -4,13 +4,13 @@ import com.mulesoft.maelstrom.pipeline.stage.Stage
 
 class HelmDeployment extends DeploymentStage {
 
-    HelmDeployment(Stage nextInChain) {
-        super(nextInChain)
-    }
+  HelmDeployment(Stage nextInChain) {
+    super(nextInChain)
+  }
 
-    @Override
-    String name() {
-        return "HELM_DEPLOYMENT"
-    }
+  @Override
+  String name() {
+    return "HELM_DEPLOYMENT"
+  }
 
 }

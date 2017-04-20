@@ -2,31 +2,32 @@ package com.mulesoft.maelstrom.pipeline
 
 abstract class Step {
 
-    Step nextInChain
+  Step nextInChain
 
-    def script
+  def script
 
-    abstract String name()
-    abstract void run()
+  abstract String name()
 
-    Step (Step nextInChain) {
-        this.nextInChain=nextInChain
-    }
+  abstract void run()
 
-    Step () {
-    }
+  Step(Step nextInChain) {
+    this.nextInChain = nextInChain
+  }
 
-    void setScript (def script) {
-        this.@script = script
-    }
+  Step() {
+  }
 
-    protected void signCompletion () {
+  void setScript(def script) {
+    this.@script = script
+  }
 
-    }
+  protected void signCompletion() {
 
-    protected void next() {
-        if (nextInChain!=null)
-            nextInChain.run()
-    }
+  }
+
+  protected void next() {
+    if (nextInChain != null)
+      nextInChain.run()
+  }
 
 }

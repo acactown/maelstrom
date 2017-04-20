@@ -4,14 +4,14 @@ import com.mulesoft.maelstrom.pipeline.agent.Agent
 
 class MavenAgent extends Agent {
 
-    @Override
-    String getImageName() {
-        return null
-    }
+  @Override
+  String getImageName() {
+    return null
+  }
 
-    @Override
-    String getImageVersion() {
-        return null
-    }
+  @Override
+  String getImageVersion() {
+    return null
+  }
 
 }

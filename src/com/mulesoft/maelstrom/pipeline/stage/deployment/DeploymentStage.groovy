@@ -4,8 +4,8 @@ import com.mulesoft.maelstrom.pipeline.stage.Stage
 
 abstract class DeploymentStage extends Stage {
 
-    DeploymentStage(Stage nextInChain) {
-        super(nextInChain)
-    }
+  DeploymentStage(Stage nextInChain) {
+    super(nextInChain)
+  }
 
 }

@@ -4,13 +4,13 @@ import com.mulesoft.maelstrom.pipeline.stage.Stage
 
 class KubeClusterProvisioning extends ProvisioningStage {
 
-    KubeClusterProvisioning(Stage nextInChain) {
-        super(nextInChain)
-    }
+  KubeClusterProvisioning(Stage nextInChain) {
+    super(nextInChain)
+  }
 
-    @Override
-    String name() {
-        return "KUBE_PROVISIONING"
-    }
+  @Override
+  String name() {
+    return "KUBE_PROVISIONING"
+  }
 
 }

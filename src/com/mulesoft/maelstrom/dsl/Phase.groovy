@@ -4,7 +4,7 @@ package com.mulesoft.maelstrom.dsl
  */
 class Phase {
 
-    String name
-    Boolean enabled
+  String name
+  Boolean enabled
 
 }

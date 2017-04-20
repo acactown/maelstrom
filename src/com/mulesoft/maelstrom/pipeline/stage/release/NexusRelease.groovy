@@ -4,13 +4,13 @@ import com.mulesoft.maelstrom.pipeline.stage.Stage
 
 class NexusRelease extends ReleaseStage {
 
-    NexusRelease(Stage nextInChain) {
-        super(nextInChain)
-    }
+  NexusRelease(Stage nextInChain) {
+    super(nextInChain)
+  }
 
-    @Override
-    String name() {
-        return "NEXUS_RELEASE"
-    }
+  @Override
+  String name() {
+    return "NEXUS_RELEASE"
+  }
 
 }

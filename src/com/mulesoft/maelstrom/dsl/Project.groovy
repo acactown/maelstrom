@@ -4,10 +4,10 @@ package com.mulesoft.maelstrom.dsl
  */
 class Project {
 
-    String product
-    String asset
-    String profile
+  String product
+  String asset
+  String profile
 
-    List<Phase> phases
+  List<Phase> phases
 
 }
