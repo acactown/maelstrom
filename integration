@@ -1,0 +1,3 @@
+#!/bin/bash
+
+sh resources/integration/$1/integration $2

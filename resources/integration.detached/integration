@@ -1,32 +1,15 @@
 #!/bin/bash
 
-readonly CONTAINERS=("localjenkins" "localjenkins_dv")
-readonly IMAGE="ezefarina/jenkins:18"
-readonly JENKINS_HOME="/var/jenkins_home"
-
 function run {
-  docker build -t $IMAGE docker/
-  docker create -v $JENKINS_HOME --name ${CONTAINERS[1]} $IMAGE
-  docker run -d -p 8080:8080 --volumes-from ${CONTAINERS[1]} --name ${CONTAINERS[0]} $IMAGE
-  docker logs -f ${CONTAINERS[0]}
+  echo "Not implemented yet"
 }
 
 function stop {
-  for i in "${CONTAINERS[@]}"
-  do
-    if docker ps | awk -v app="$i" 'NR>1{  ($(NF) == i )  }'; then
-      docker stop "$i"
-    fi
-  done
+  echo "Not implemented yet"
 }
 
 function clean {
-  for i in "${CONTAINERS[@]}"
-  do
-    if docker ps | awk -v app="$i" 'NR>1{  ($(NF) == i )  }'; then
-      docker stop "$i" && docker rm -f "$i"
-    fi
-  done
+  echo "Not implemented yet"
 }
 
 function main {
