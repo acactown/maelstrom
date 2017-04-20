@@ -1,7 +1,7 @@
 #!/bin/bash
 
 readonly CONTAINERS=("localjenkins" "localjenkins_dv")
-readonly IMAGE="ezefarina/jenkins:18"
+readonly IMAGE="ezefarina/jenkins:20"
 readonly JENKINS_HOME="/var/jenkins_home"
 
 function run {

@@ -22,9 +22,14 @@ import com.mulesoft.maelstrom.pipeline.stage.setup.DockerLogin
 class Pipeline {
 
   private static Integration integration
+  private static String workspace
 
   public static doIntegration(Integration integration) {
     this.integration = integration
+  }
+
+  public static setWorkspace(String workspace) {
+    this.workspace = workspace
   }
 
   public static Integration getIntegration() {
@@ -35,8 +40,13 @@ class Pipeline {
 
   public static void run() {
     JenkinsIntegration jenkins = integration
-    jenkins.script.echo "Testttttttt"
-    jenkins.script.sh 'pwd'
+    jenkins.script.echo "##################################################"
+    jenkins.script.echo "##################################################"
+    jenkins.script.echo jenkins.script.env.WORKSPACE
+    jenkins.script.echo workspace
+    jenkins.script.echo hudson.model.Executor.currentExecutor().getCurrentWorkspace()
+    jenkins.script.echo "##################################################"
+    jenkins.script.echo "##################################################"
 
     Phase phase = new PipelineComposer()
       .addPhase(new SetupPhase())
