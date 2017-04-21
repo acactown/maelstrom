@@ -16,6 +16,11 @@ class JenkinsIntegration implements Integration {
   }
 
   @Override
+  String getWorkingDirectory() {
+    script.env.WORKINGDIRECTORY
+  }
+
+  @Override
   def stageInit(final String name) {
     script.stage name
   }

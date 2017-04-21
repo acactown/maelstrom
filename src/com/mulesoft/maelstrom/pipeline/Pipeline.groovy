@@ -1,5 +1,7 @@
 package com.mulesoft.maelstrom.pipeline
 
+import com.mulesoft.maelstrom.dsl.Project
+import com.mulesoft.maelstrom.dsl.parser.MaelstromDeclarationParser
 import com.mulesoft.maelstrom.pipeline.core.PipelineComposer
 import com.mulesoft.maelstrom.pipeline.integration.Integration
 import com.mulesoft.maelstrom.pipeline.integration.jenkins.JenkinsIntegration
@@ -39,14 +41,8 @@ class Pipeline {
   }
 
   public static void run() {
-    JenkinsIntegration jenkins = integration
-    jenkins.script.echo "##################################################"
-    jenkins.script.echo "##################################################"
-    jenkins.script.echo jenkins.script.env.WORKSPACE
-    jenkins.script.echo workspace
-    jenkins.script.echo hudson.model.Executor.currentExecutor().getCurrentWorkspace()
-    jenkins.script.echo "##################################################"
-    jenkins.script.echo "##################################################"
+
+    Project p = MaelstromDeclarationParser.fromYAMLFile((Pipeline.integration.getWorkingDirectory())+"/maelstrom.yaml")
 
     Phase phase = new PipelineComposer()
       .addPhase(new SetupPhase())

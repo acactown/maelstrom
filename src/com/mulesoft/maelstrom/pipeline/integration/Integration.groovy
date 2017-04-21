@@ -2,6 +2,8 @@ package com.mulesoft.maelstrom.pipeline.integration
 
 interface Integration {
 
+  String getWorkingDirectory()
+
   def stageInit(String name)
 
   def stageFinish(String name)

@@ -4,7 +4,7 @@ import com.mulesoft.maelstrom.dsl.Phase
 import com.mulesoft.maelstrom.dsl.Project
 import org.yaml.snakeyaml.Yaml
 
-class DeclarationParser {
+class MaelstromDeclarationParser {
 
   private static Yaml parser = new Yaml()
 
